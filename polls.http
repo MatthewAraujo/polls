@@ -1,0 +1,21 @@
+@baseUrl= http://localhost:3333
+
+
+POST {{baseUrl}}/polls
+Content-Type: application/json
+
+{
+  "title": "Qual sua linguagem de programação favorita?",
+  "options": ["Java", "JavaScript", "Python", "C++"]
+}
+###
+
+GET {{baseUrl}}/polls/4cbeff0a-95f2-415a-976f-6be419f421e9
+###
+
+POST {{baseUrl}}/polls/4cbeff0a-95f2-415a-976f-6be419f421e9/votes
+Content-Type: application/json
+
+{
+  "pollOptionId": "291b0fa4-8d1b-4800-aa6a-8b3ee14cf652"
+}
