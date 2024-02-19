@@ -10,12 +10,12 @@ Content-Type: application/json
 }
 ###
 
-GET {{baseUrl}}/polls/4cbeff0a-95f2-415a-976f-6be419f421e9
+GET {{baseUrl}}/polls/4cf73086-0485-4e43-8eb1-5a58bd554a34
 ###
 
-POST {{baseUrl}}/polls/4cbeff0a-95f2-415a-976f-6be419f421e9/votes
+POST {{baseUrl}}/polls/4cf73086-0485-4e43-8eb1-5a58bd554a34/votes
 Content-Type: application/json
 
 {
-  "pollOptionId": "291b0fa4-8d1b-4800-aa6a-8b3ee14cf652"
+  "pollOptionId": "bccc936a-b7cd-4ef2-9f9d-ad307da8f904"
 }
