@@ -9,8 +9,6 @@ import { Poll } from './components/Poll'
 
 function App() {
   const [input, setInput] = useState(1)
-  const [options, setOptions] = useState<string[]>([])
-  const [title, setTitle] = useState('')
   const [data, setData] = useState('')
 
   function handleAddInput() {
@@ -21,15 +19,7 @@ function App() {
     setInput(input - 1)
   }
 
-  function handleSetOptions(option: []) {
-    setOptions(option)
-  }
-
-  function handleSetTitle(title: string) {
-    setTitle(title)
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const formData = new FormData(e.currentTarget)
@@ -38,12 +28,14 @@ function App() {
       options: Array.from(formData.getAll('options'))
     }
 
-    handleSetOptions(data.options as string[])
-    handleSetTitle(data.title as string)
+    const response = await api.post('polls', data)
+    const poll = response.data
+    console.log(poll.pollId)
+    getData(poll.pollId)
   }
 
-  async function getData() {
-    const response = await api.get('polls/6c111725-8614-4f22-a8a1-bfe10f91a2c0')
+  async function getData(pollId: string) {
+    const response = await api.get(`polls/${pollId}`)
     const data = response.data.poll
     setData(data)
 
