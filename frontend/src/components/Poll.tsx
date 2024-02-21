@@ -1,16 +1,15 @@
 import { Input } from "./ui/input";
 
-interface PollProps {
-  id: string;
+export interface PollProps {
   title: string;
   options: {
     id: string;
     title: string;
-  }[]
+  }[];
 }
 
 
-export function Poll({id, title, options}: PollProps){
+export function Poll({title, options}: PollProps){
   return (
     <div>
       <h2>{title}</h2>

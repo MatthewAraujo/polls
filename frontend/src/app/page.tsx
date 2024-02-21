@@ -1,13 +1,14 @@
-import { useState } from 'react'
+"use client"
+import { Poll } from "@/components/Poll";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { api } from "@/lib/axios";
+import {MinusCircleIcon, PlusCircleIcon} from 'lucide-react'
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-import './App.css'
-import { Input } from './components/ui/input'
-import { PlusCircleIcon, MinusCircleIcon } from 'lucide-react'
-import { Button } from './components/ui/button'
-import { api } from './lib/axios'
-import { Poll } from './components/Poll'
-
-function App() {
+export default function Home() {
+  const router = useRouter()
   const [input, setInput] = useState(1)
   const [data, setData] = useState('')
 
@@ -30,25 +31,17 @@ function App() {
 
     const response = await api.post('polls', data)
     const poll = response.data
-    console.log(poll.pollId)
-    getData(poll.pollId)
+    router.push(`/polls/${poll.pollId}`)
   }
 
-  async function getData(pollId: string) {
-    const response = await api.get(`polls/${pollId}`)
-    const data = response.data.poll
-    setData(data)
 
-  }
-
-  // getData()
   return (
     <>
       <div className='max-w-64 mx-auto'>
         <h1 className=''>Create your Poll</h1>
 
-        <div className='flex flex-col gap-2'>
-          <form action="" onSubmit={handleSubmit}>
+        <div className='flex flex-col gap-2 justify-center items-center'>
+          <form action="" onSubmit={handleSubmit} className="flex justify-center items-center flex-col gap-2" >
             <div className='mb-5'>
               <Input type="text"
                 name='title'
@@ -84,19 +77,11 @@ function App() {
               ))
             }
 
-            <Button type='submit' onClick={getData}>Create Poll</Button>
+            <Button type='submit'>Create Poll</Button>
           </form>
         </div>
 
-        <div className='mt-52'>
-          {
-            data && <Poll id={data.id} title={data.title} options={data.options} />
-          }
-        </div>
       </div>
     </>
   )
 }
-
-
-export default App
