@@ -28,9 +28,9 @@ Polls is a full-stack polling project that allows users to vote, create polls, g
 
 ### Database
 
+- *using docker to pushing this up*
 - **PostgreSQL:** Powerful and open-source relational database.
 - **Redis:** In-memory data structure store for caching.
-*using docker to pushing this up*
 
 ## Getting Started
 
