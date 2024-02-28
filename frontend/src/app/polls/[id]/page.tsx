@@ -1,24 +1,12 @@
-"use client"
 import { Poll } from "@/components/Poll"
-import { api } from "@/lib/axios"
-import { useState } from "react"
 
-export default function Page({ params }: { params: { id: string } }) {
-  const [data, setData] = useState('')
-  async function getData(pollId: string) {
-    const response = await api.get(`polls/${pollId}`)
-    const data = response.data.poll
-    setData(data)
-  }
-
-  getData(params.id)
-
-
-
+export default async function Page({ params }: { params: { id: string } }) {
+  const response = await fetch(`http://localhost:3333/polls/${params.id}`)
+  const {poll} = await response.json()
   return (
-    <div className='mt-52 mx-auto max-w-20'>
+    <div className='mt-52 mx-auto max-w-56'>
       {
-        data && <Poll title={data.title} options={data.options} />
+        poll && <Poll title={poll.title} options={poll.options} />
       }
     </div>
   )
