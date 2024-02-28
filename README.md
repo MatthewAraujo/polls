@@ -32,6 +32,21 @@ Polls is a full-stack polling project that allows users to vote, create polls, g
 - **PostgreSQL:** Powerful and open-source relational database.
 - **Redis:** In-memory data structure store for caching.
 
+## Tasks
+
+### Front end
+
+- [x] Develop the front-end for Create and View Polls
+- [ ] User can vote
+- [ ] User can view real life updates from votes
+
+### Back end
+- [x] Set up project structure and dependencies
+- [x] Create API endpoints for poll creation and retrieval
+- [x] Implement real-time updates using Websockets
+
+
+
 ## Getting Started
 
 ### Prerequisites
