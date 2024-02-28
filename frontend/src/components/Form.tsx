@@ -26,12 +26,16 @@ export function Form(){
       options: Array.from(formData.getAll('options'))
     }
 
-    const response = await fetch('http:/localhost:3333/polls', {
+    console.log(JSON.stringify(data))
+    const response = await fetch('http://localhost:3333/polls', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
-
     const poll = await response.json()
+    console.log(poll)
 
     router.push(`/polls/${poll.pollId}`)
   }
