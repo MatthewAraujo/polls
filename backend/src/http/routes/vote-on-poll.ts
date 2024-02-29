@@ -4,6 +4,7 @@ import z from "zod";
 import { randomUUID } from "node:crypto";
 import { redis } from "../../lib/redis";
 import { votingPubSub } from "../../utils/voting-pub-sub";
+import console from "node:console";
 
 export async function voteOnPoll(app: FastifyInstance) {
   app.post("/polls/:pollId/votes", async (request, reply) => {

@@ -13,9 +13,9 @@ Content-Type: application/json
 GET {{baseUrl}}/polls/4cf73086-0485-4e43-8eb1-5a58bd554a34
 ###
 
-POST {{baseUrl}}/polls/95814710-aa94-4453-a539-3f01317ab9c4/votes
+POST {{baseUrl}}/polls/8fbda35e-8253-4e8d-8fcd-244c84efa361/votes
 Content-Type: application/json
 
 {
-  "pollOptionId": "6671e233-3401-424b-b2e1-93d601445860"
+  "pollOptionId": "8fbda35e-8253-4e8d-8fcd-244c84efa361"
 }

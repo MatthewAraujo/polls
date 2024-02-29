@@ -1,7 +1,9 @@
+"use client"
 import { Votes } from "./Votes";
 import { Input } from "./ui/input";
 
 export interface PollProps {
+  pollId: string;
   title: string;
   options: {
     id: string;
@@ -11,8 +13,25 @@ export interface PollProps {
 }
 
 
-export function Poll({title, options}: PollProps){
+export function Poll({ title, options, pollId }: PollProps) {
 
+  async function handleVote(id: string) {
+    const data = { pollOptionId: id }
+    const response = await fetch(`http://localhost:3333/polls/${pollId}/votes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Set-Cookie': 'HttpOnly;Secure;SameSite=Strict'
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (!response.ok) {
+      console.log(response)
+      return
+    }
+
+  }
   return (
     <div>
       <h2>{title}</h2>
@@ -22,11 +41,12 @@ export function Poll({title, options}: PollProps){
             type="text"
             id={option.id}
             name="pollOption"
+            onClick={() => handleVote(option.id)}
             value={option.title}
             readOnly
             className='  text-black font-bold py-2 px-4 w-fit rounded cursor-pointer bg-gray-100 hover:bg-gray-200 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50'
           />
-          <Votes options={options} />
+          <Votes id={option.id} votes={option.votes} />
         </div>
       ))}
     </div>

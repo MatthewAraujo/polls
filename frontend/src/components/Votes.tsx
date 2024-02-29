@@ -1,16 +1,13 @@
-"use client"
-import { useState } from "react"
+import { Button } from "./ui/button"
 
-export function Votes({options}: {options: {id: string, votes: number}[]}){
-  const [selectedOption, setSelectedOption] = useState(0)
+interface Votes {
+  id: string 
+  votes: number
+}
 
-  function handleVote(optionId: string){
-    const option = options.find((option) => option.id === optionId)
-    if(option){
-      setSelectedOption(option.votes)
-    }
-  }
+export function Votes({ id, votes }: Votes) {
+  
   return (
-    <span className="absolute right-0 text-black">{selectedOption}</span>
+    <Button className="absolute right-0 text-black bg-transparent hover:bg-transparent">{votes}</Button>
   )
 }
