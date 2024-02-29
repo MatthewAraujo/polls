@@ -37,7 +37,7 @@ Polls is a full-stack polling project that allows users to vote, create polls, g
 ### Front end
 
 - [x] Develop the front-end for Create and View Polls
-- [ ] User can vote
+- [x] User can vote
 - [ ] User can view real life updates from votes
 
 ### Back end
