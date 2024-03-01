@@ -38,7 +38,6 @@ export function Form(){
       console.log(response)
       return
     }
-
     const {pollId} = await response.json()
     router.push(`/polls/${pollId}`)
   }
