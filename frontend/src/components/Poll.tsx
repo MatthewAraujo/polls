@@ -21,7 +21,6 @@ export function Poll({ title, options, pollId }: PollProps) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Set-Cookie': 'HttpOnly;Secure;SameSite=Strict'
       },
       body: JSON.stringify(data),
     })
